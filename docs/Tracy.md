@@ -8,13 +8,13 @@ Register the panel in your config.neon:
 ```neon
 tracy:
 	bar:
-		- Matraux\PhpBenchmark\Tracy\BenchmarkPanel
+		- Matraux\PhpBenchmark\Bridge\Tracy\BenchmarkPanel
 ```
 
 ## Tracy standalone
 If you are not using Nette DI, you can manually register the panel:
 ```php
-use Matraux\PhpBenchmark\Tracy\BenchmarkPanel;
+use Matraux\PhpBenchmark\Bridge\Tracy\BenchmarkPanel;
 use Tracy\Debugger;
 
 Debugger::getBar()->addPanel(new BenchmarkPanel());
