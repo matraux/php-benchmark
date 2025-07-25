@@ -4,9 +4,9 @@ namespace Matraux\PhpBenchmarkTest;
 
 use LogicException;
 use Matraux\PhpBenchmark\Measurement\Measurement;
-use Tester\TestCase;
 use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
 use Tester\Assert;
+use Tester\TestCase;
 
 require_once __DIR__ . '/Bootstrap.php';
 
@@ -34,7 +34,7 @@ final class MeasurementStorageTest extends TestCase
 
 		$measurement = Measurement::create('', 0, [0], 0);
 
-		Assert::noError(function()use($measurement){
+		Assert::noError(function () use ($measurement): void {
 			MeasurementStorage::add($measurement);
 			MeasurementStorage::add($measurement);
 		});
@@ -53,13 +53,13 @@ final class MeasurementStorageTest extends TestCase
 	{
 		Bootstrap::purgeTemp(__FUNCTION__);
 
-		Assert::noError(function(){
-			foreach(MeasurementStorage::create() as $measurement) {
+		Assert::noError(function (): void {
+			foreach (MeasurementStorage::create() as $measurement) {
 
 			}
 		});
 
-		Assert::noError(function(){
+		Assert::noError(function (): void {
 			iterator_to_array(MeasurementStorage::create());
 		});
 	}
@@ -68,7 +68,7 @@ final class MeasurementStorageTest extends TestCase
 	{
 		Bootstrap::purgeTemp(__FUNCTION__);
 
-		Assert::error(function(){
+		Assert::error(function (): void {
 			$clone = clone MeasurementStorage::create();
 		}, LogicException::class);
 	}

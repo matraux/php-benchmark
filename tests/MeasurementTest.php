@@ -3,8 +3,8 @@
 namespace Matraux\PhpBenchmarkTest;
 
 use Matraux\PhpBenchmark\Measurement\Measurement;
-use Tester\TestCase;
 use Tester\Assert;
+use Tester\TestCase;
 
 require_once __DIR__ . '/Bootstrap.php';
 
@@ -53,7 +53,7 @@ final class MeasurementTest extends TestCase
 			memory: 0
 		);
 
-		Assert::noError(function()use($measurement){
+		Assert::noError(function () use ($measurement): void {
 			json_encode($measurement);
 		});
 	}
@@ -69,7 +69,7 @@ final class MeasurementTest extends TestCase
 			memory: 0
 		);
 
-		Assert::noError(function()use($measurement){
+		Assert::noError(function () use ($measurement): void {
 			(string) $measurement;
 		});
 	}

@@ -37,7 +37,7 @@ final class BenchmarkTest extends TestCase
 		}, UnexpectedValueException::class);
 
 		Assert::error(function () use ($benchmark): void {
-			$benchmark->multiplier = 0;  // @phpstan-ignore-line
+			$benchmark->multiplier = 0; // @phpstan-ignore-line
 		}, UnexpectedValueException::class);
 	}
 
