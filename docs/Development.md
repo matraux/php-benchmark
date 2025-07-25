@@ -12,7 +12,6 @@ composer codefixer   # Run PHP Code Style Fixer (phpcbf)
 composer codesniffer # Run PHP CodeSniffer (phpcs)
 composer stan        # Run static analysis (PHPStan)
 composer test        # Run unit tests (Tester)
-composer finalize    # Run PHPStan and tests
 ```
 
 <br>

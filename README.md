@@ -24,6 +24,7 @@ Simple and precise benchmarking for PHP 8.4+. Measures execution time and memory
 - Fluent API for accessing results
 - Minimal overhead, suitable for micro-benchmarking
 - Native support for PHP 8.4+ features
+- Integrates with Tracy for real-time benchmark visualization
 
 <br>
 
@@ -43,7 +44,7 @@ composer require matraux/php-benchmark
 <br>
 
 ## Examples
-See [Tracy](./docs/Tracy.md) or [Standalone](./docs/Standalone.md) integration for advance instruction.
+See [Tracy](./docs/Tracy.md) or [Standalone](./docs/Standalone.md) integration for advanced instructions.
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 

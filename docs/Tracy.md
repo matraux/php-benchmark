@@ -22,6 +22,8 @@ Debugger::getBar()->addPanel(new BenchmarkPanel());
 
 ## Sample measurement code
 ```php
+use Matraux\PhpBenchmark\Benchmark\Benchmark;
+
 $performance = Benchmark::create();
 $performance->counter = 10;
 $performance->multiplier = 2;
