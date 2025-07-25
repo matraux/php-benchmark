@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Matraux\PhpBenchmark\Tracy;
+namespace Matraux\PhpBenchmark\Bridge\Tracy;
 
 use Matraux\PhpBenchmark\Measurement\Measurement;
 use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
