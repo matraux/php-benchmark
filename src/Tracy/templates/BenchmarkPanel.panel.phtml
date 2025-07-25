@@ -1,0 +1,134 @@
+<?php declare(strict_types=1);
+
+namespace Matraux\PhpBenchmark\Tracy\templates;
+
+?>
+
+<style class="tracy-debug">
+	#tracy-debug .benchmark-panel .default-background {
+		background: white !important;
+	}
+
+	#tracy-debug .benchmark-panel .detail table {
+		margin-top: 15px;
+	}
+
+	#tracy-debug .benchmark-panel .detail table caption {
+		font-weight: bolder;
+	}
+
+	#tracy-debug .benchmark-panel .editor-link {
+		margin-top: 6px;
+	}
+
+	#tracy-debug .benchmark-panel .editor-link a {
+		color: #BBB !important;
+	}
+
+	#tracy-debug .benchmark-panel [data-tooltip] {
+		position: relative;
+		cursor: help;
+	}
+
+	#tracy-debug .benchmark-panel [data-tooltip]::after {
+		content: attr(data-tooltip);
+		position: absolute;
+		bottom: 100%;
+		left: 0;
+		background: #333;
+		color: #fff;
+		padding: 4px 8px;
+		font-size: 11px;
+		border-radius: 4px;
+		white-space: nowrap;
+		box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+		z-index: 1;
+		opacity: 0;
+		pointer-events: none;
+		transform: translateY(-5px);
+		transition: all 0.2s ease-in-out;
+	}
+
+	#tracy-debug .benchmark-panel [data-tooltip]:hover::after {
+		opacity: 1;
+		pointer-events: auto;
+		transform: translateY(0px);
+	}
+</style>
+
+<h1>Benchmark</h1>
+<div class="tracy-inner benchmark-panel">
+	<div class="tracy-inner-container">
+		<table>
+			<thead>
+				<tr>
+					<th>Label</th>
+					<th>Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<?php foreach($results as $result): ?>
+					<?php $toggle = 'tracy-addons-benchmark-' . uniqid(); ?>
+					<tr>
+						<td>
+							<div><?= $result->label ?></div>
+							<a href="#<?=$toggle?>" class="tracy-toggle tracy-collapsed">detail</a>
+						</td>
+						<td class="default-background">
+							<div>
+								<strong data-tooltip="Average of all measurements">
+									<?= self::formatTime($result->average) ?>
+								</strong>
+							</div>
+							<div id="<?= $toggle ?>" class="tracy-collapsed detail">
+								<table>
+									<caption>Measurement</caption>
+									<thead>
+										<tr>
+											<th data-tooltip="Fastest measurement">Min</th>
+											<th data-tooltip="Slowest measurement">Max</th>
+											<th data-tooltip="Average of all measurements">Average</th>
+											<th data-tooltip="Measurement spread">Deviation</th>
+											<th data-tooltip="Sum of all measurements">Total</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><?= self::formatTime($result->min) ?></td>
+											<td><?= self::formatTime($result->max) ?></td>
+											<td><?= self::formatTime($result->average) ?></td>
+											<td><?= self::formatTime($result->deviation) ?></td>
+											<td><?= self::formatTime($result->total) ?></td>
+										</tr>
+									</tbody>
+								</table>
+								<table>
+									<caption>Configuration</caption>
+									<thead>
+										<tr>
+											<th data-tooltip="Memory usage">Memory</th>
+											<th data-tooltip="Number of repeats">Counter</th>
+											<th data-tooltip="Number of measurements">Multiplier</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><?= self::formatBytes($result->memory) ?></td>
+											<td><?= $result->counter ?></td>
+											<td><?= $result->multiplier ?></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<?php if($result->file): ?>
+								<div class="editor-link">
+									<?= self::editorLink($result) ?>
+								</div>
+							<?php endif ?>
+						</td>
+					</tr>
+				<?php endforeach?>
+			</tbody>
+		</table>
+	</div>
+</div>
