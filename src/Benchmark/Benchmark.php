@@ -70,7 +70,7 @@ final class Benchmark
 		for ($m = 1; $m <= $this->multiplier; $m++) {
 			$time = hrtime(true);
 
-			ob_start();
+			ob_start(function(){return '';});
 			for ($n = 1; $n <= $this->counter; $n++) {
 				$callable(...$arguments);
 			}
