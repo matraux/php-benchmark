@@ -27,7 +27,7 @@ final class BenchmarkPanel implements IBarPanel
 			$value *= 1000;
 		}
 
-		return sprintf('%u %s', number_format($value, 2, '.', ' '), $unit);
+		return number_format($value, 2, '.', ' ') . ' ' . $unit;
 	}
 
 	public static function formatBytes(int $value): string
@@ -41,7 +41,7 @@ final class BenchmarkPanel implements IBarPanel
 			$value /= 1024;
 		}
 
-		return sprintf('%u %s', number_format($value, 2, '.', ' '), $unit);
+		return number_format($value, 2, '.', ' ') . ' ' . $unit;
 	}
 
 	public static function editorLink(Measurement $result): ?string
