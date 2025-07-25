@@ -1,4 +1,4 @@
-**[Back](../Readme.md)**
+**[Back](../README.md)**
 
 # Nette Tracy integration
 The performance panel can be used in any project that uses Tracy, whether via the Nette Framework or standalone.

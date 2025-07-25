@@ -1,4 +1,4 @@
-**[Back](../Readme.md)**
+**[Back](../README.md)**
 
 # Standalone Usage
 You can use the benchmark independently, without any framework or Tracy integration.
