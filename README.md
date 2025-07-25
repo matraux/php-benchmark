@@ -40,6 +40,7 @@ composer require matraux/php-benchmark
 |----|---|---
 | 1.0.7 | 8.3+ | Initial commit
 | 1.1.0 | 8.4+ | Property access, performance optimizations
+| 1.1.1 | 8.4+ | Bugfixes and formatting improvements
 
 <br>
 
