@@ -70,11 +70,10 @@ final class Benchmark
 		for ($m = 1; $m <= $this->multiplier; $m++) {
 			$time = hrtime(true);
 
-			ob_start(fn () => '');
+			ob_start();
 			for ($n = 1; $n <= $this->counter; $n++) {
 				$callable(...$arguments);
 			}
-
 			ob_end_clean();
 
 			$times[] = (hrtime(true) - $time) / 1e9;
