@@ -13,7 +13,7 @@ Bootstrap::tester();
 /**
  * @testCase
  */
-final class MeasuremenTest extends TestCase
+final class MeasurementTest extends TestCase
 {
 
 	public function testProperties(): void
@@ -76,4 +76,4 @@ final class MeasuremenTest extends TestCase
 
 }
 
-new MeasuremenTest()->run();
+new MeasurementTest()->run();

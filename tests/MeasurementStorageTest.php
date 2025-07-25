@@ -15,7 +15,7 @@ Bootstrap::tester();
 /**
  * @testCase
  */
-final class MeasuremenStorageTest extends TestCase
+final class MeasurementStorageTest extends TestCase
 {
 
 	public function testSingleton(): void
@@ -75,4 +75,4 @@ final class MeasuremenStorageTest extends TestCase
 
 }
 
-new MeasuremenStorageTest()->run();
+new MeasurementStorageTest()->run();
