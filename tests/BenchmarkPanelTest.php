@@ -2,7 +2,7 @@
 
 namespace Matraux\PhpBenchmarkTest;
 
-use Matraux\PhpBenchmark\Tracy\BenchmarkPanel;
+use Matraux\PhpBenchmark\Bridge\Tracy\BenchmarkPanel;
 use Tester\Assert;
 use Tester\TestCase;
 use Tracy\Debugger;
