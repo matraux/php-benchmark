@@ -22,41 +22,41 @@ final class MeasurementStorage implements Countable, IteratorAggregate
 	{
 	}
 
-	public function getIterator(): Traversable
-	{
-		foreach (static::$results as $index => $result) {
-			yield $index => $result;
-		}
-	}
-
 	public static function create(): static
 	{
-		return static::$instance ??= new static();
-	}
-
-	public function count(): int
-	{
-		return count(static::$results);
+		return self::$instance ??= new static();
 	}
 
 	public static function add(Measurement $result): Measurement
 	{
-		return static::$results[] = $result;
+		return self::$results[] = $result;
+	}
+
+	public function getIterator(): Traversable
+	{
+		foreach (self::$results as $index => $result) {
+			yield $index => $result;
+		}
+	}
+
+	public function count(): int
+	{
+		return count(self::$results);
 	}
 
 	public function __clone(): void
 	{
-		throw new LogicException(sprintf('Clone "%s" is not allowed.', static::class));
+		throw new LogicException(sprintf('Clone "%s" is not allowed.', self::class));
 	}
 
 	public function __sleep(): array
 	{
-		throw new LogicException(sprintf('Serialize "%s" is not allowed.', static::class));
+		throw new LogicException(sprintf('Serialize "%s" is not allowed.', self::class));
 	}
 
 	public function __wakeup(): void
 	{
-		throw new LogicException(sprintf('Unserialize "%s" is not allowed.', static::class));
+		throw new LogicException(sprintf('Unserialize "%s" is not allowed.', self::class));
 	}
 
 }

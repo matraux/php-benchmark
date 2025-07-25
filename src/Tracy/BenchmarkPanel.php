@@ -2,8 +2,8 @@
 
 namespace Matraux\PhpBenchmark\Tracy;
 
-use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
 use Matraux\PhpBenchmark\Measurement\Measurement;
+use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
 use Nette\Utils;
 use Nette\Utils\FileSystem;
 use Tracy\Helpers;

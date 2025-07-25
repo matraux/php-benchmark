@@ -2,8 +2,8 @@
 
 namespace Matraux\PhpBenchmark\Benchmark;
 
-use UnexpectedValueException;
 use Matraux\PhpBenchmark\Measurement\Measurement;
+use UnexpectedValueException;
 
 final class Benchmark
 {
@@ -70,10 +70,11 @@ final class Benchmark
 		for ($m = 1; $m <= $this->multiplier; $m++) {
 			$time = hrtime(true);
 
-			ob_start(function(){return '';});
+			ob_start(fn () => '');
 			for ($n = 1; $n <= $this->counter; $n++) {
 				$callable(...$arguments);
 			}
+
 			ob_end_clean();
 
 			$times[] = (hrtime(true) - $time) / 1e9;
@@ -93,6 +94,5 @@ final class Benchmark
 			line: $debug['line']
 		);
 	}
-
 
 }

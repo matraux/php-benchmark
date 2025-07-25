@@ -47,16 +47,16 @@ final class Measurement implements JsonSerializable, Stringable
 	public float $deviation
 	{
 		get {
-			if(isset($this->deviation)) {
+			if (isset($this->deviation)) {
 				return $this->deviation;
 			}
 
 			$variance = 0;
-      foreach($this->times as $time) {
-				$variance += pow($time - $this->average, 2);
-			}
+	foreach ($this->times as $time) {
+			$variance += pow($time - $this->average, 2);
+	}
 
-      return $this->deviation = sqrt($variance/$this->multiplier);
+	  return $this->deviation = sqrt($variance / $this->multiplier);
 		}
 	}
 
@@ -76,7 +76,19 @@ final class Measurement implements JsonSerializable, Stringable
 	}
 
 	/**
-	 * @return array<string,null|int|float|string>
+	 * @param array<int|float> $times
+	 */
+	public static function create(string $label, int $counter, array $times, int $memory, ?string $file = null, ?int $line = null): static
+	{
+		if (empty($times)) {
+			throw new RuntimeException('Expected non empty array, empty array given.');
+		}
+
+		return new static($label, $counter, $times, $memory, $file, $line);
+	}
+
+	/**
+	 * @return array<string,int|float|string|null>
 	 */
 	public function jsonSerialize(): array
 	{
@@ -98,23 +110,11 @@ final class Measurement implements JsonSerializable, Stringable
 	public function __toString(): string
 	{
 		$string = '';
-		foreach($this->jsonSerialize() as $label => $value) {
+		foreach ($this->jsonSerialize() as $label => $value) {
 			$string .= sprintf("%s: %s\n", $label, $value);
 		}
 
 		return $string;
-	}
-
-	/**
-	 * @param array<int|float> $times
-	 */
-	public static function create(string $label, int $counter, array $times, int $memory, ?string $file = null, ?int $line = null): static
-	{
-		if (empty($times)) {
-			throw new RuntimeException('Expected non empty array, empty array given.');
-		}
-
-		return new static($label, $counter, $times, $memory, $file, $line);
 	}
 
 }
