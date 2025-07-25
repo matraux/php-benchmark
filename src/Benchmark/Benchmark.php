@@ -83,7 +83,7 @@ final class Benchmark
 		$memory = memory_get_peak_usage() - $memory;
 
 		/** @var array{function:string,line:int,file:string,class:string,type:string} */
-		$debug = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)[0];
+		$debug = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
 
 		return Measurement::create(
 			label: $this->label,
