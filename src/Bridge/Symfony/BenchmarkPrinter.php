@@ -28,7 +28,7 @@ final class BenchmarkPrinter
 		]);
 		$table->setStyle('box');
 
-		foreach(MeasurementStorage::create() as $measurement) {
+		foreach (MeasurementStorage::create() as $measurement) {
 			$table->addRow([
 				$measurement->label,
 				Metric::duration($measurement->min),
@@ -42,7 +42,7 @@ final class BenchmarkPrinter
 				Metric::duration($measurement->total),
 				Metric::bytes($measurement->memory),
 				$measurement->counter,
-				$measurement->multiplier
+				$measurement->multiplier,
 			]);
 		}
 
