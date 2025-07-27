@@ -16,34 +16,6 @@ final class BenchmarkPanel implements IBarPanel
 
 	private const Templates = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
 
-	public static function formatTime(float $value): string
-	{
-		$value = abs($value);
-		foreach (['s', 'ms', 'µs', 'ns'] as $unit) {
-			if ($value > 1) {
-				break;
-			}
-
-			$value *= 1000;
-		}
-
-		return number_format($value, 2, '.', ' ') . ' ' . $unit;
-	}
-
-	public static function formatBytes(int $value): string
-	{
-		$value = abs($value);
-		foreach (['B', 'kB', 'MB', 'GB'] as $unit) {
-			if ($value < 1024) {
-				break;
-			}
-
-			$value /= 1024;
-		}
-
-		return number_format($value, 2, '.', ' ') . ' ' . $unit;
-	}
-
 	public static function editorLink(Measurement $result): ?string
 	{
 		return $result->file ? Helpers::editorLink($result->file, $result->line) : null;

@@ -2,6 +2,8 @@
 
 namespace Matraux\PhpBenchmark\Bridge\Tracy\templates;
 
+use Matraux\PhpBenchmark\Utils\Metric;
+
 ?>
 
 <style class="tracy-debug">
@@ -77,7 +79,7 @@ namespace Matraux\PhpBenchmark\Bridge\Tracy\templates;
 						<td class="default-background">
 							<div>
 								<strong data-tooltip="Average of all measurements">
-									<?= self::formatTime($result->average) ?>
+									<?= Metric::duration($result->average) ?>
 								</strong>
 							</div>
 							<div id="<?= $toggle ?>" class="tracy-collapsed detail">
@@ -94,11 +96,11 @@ namespace Matraux\PhpBenchmark\Bridge\Tracy\templates;
 									</thead>
 									<tbody>
 										<tr>
-											<td><?= self::formatTime($result->min) ?></td>
-											<td><?= self::formatTime($result->max) ?></td>
-											<td><?= self::formatTime($result->average) ?></td>
-											<td><?= self::formatTime($result->deviation) ?></td>
-											<td><?= self::formatTime($result->total) ?></td>
+											<td><?= Metric::duration($result->min) ?></td>
+											<td><?= Metric::duration($result->max) ?></td>
+											<td><?= Metric::duration($result->average) ?></td>
+											<td><?= Metric::duration($result->deviation) ?></td>
+											<td><?= Metric::duration($result->total) ?></td>
 										</tr>
 									</tbody>
 								</table>
@@ -113,7 +115,7 @@ namespace Matraux\PhpBenchmark\Bridge\Tracy\templates;
 									</thead>
 									<tbody>
 										<tr>
-											<td><?= self::formatBytes($result->memory) ?></td>
+											<td><?= Metric::bytes($result->memory) ?></td>
 											<td><?= $result->counter ?></td>
 											<td><?= $result->multiplier ?></td>
 										</tr>
