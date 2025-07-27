@@ -42,6 +42,7 @@ composer require matraux/php-benchmark
 | 1.1.0 | 8.4+ | Property access, performance optimizations
 | 1.1.1 | 8.4+ | Bugfixes and formatting improvements
 | 1.2.0 | 8.4+ | Integrations into Bridge/Tracy
+| 1.3.0 | 8.4+ | Added Symfony Console integration
 
 <br>
 
