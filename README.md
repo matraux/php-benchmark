@@ -46,16 +46,16 @@ composer require matraux/php-benchmark
 <br>
 
 ## Examples
-See [Tracy](./docs/Tracy.md) or [Standalone](./docs/Standalone.md) integration for advanced instructions.
+See [Tracy](./docs/Tracy.md), [Standalone](./docs/Standalone.md) or [Console](./docs/Console.md) integration for advanced instructions.
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 
-$performance = Benchmark::create();
-$performance->label = 'Memory peak 20 MB';
-$performance->counter = 10;
-$performance->multiplier = 2;
+$benchmark = Benchmark::create();
+$benchmark->label = 'Memory peak 20 MB';
+$benchmark->counter = 10;
+$benchmark->multiplier = 2;
 
-$measurement = $performance->run(function (): string {
+$measurement = $benchmark->run(function (): string {
 	return str_repeat(' ', 20 * 1024 * 1024);
 });
 

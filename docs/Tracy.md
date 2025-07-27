@@ -24,12 +24,12 @@ Debugger::getBar()->addPanel(new BenchmarkPanel());
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 
-$performance = Benchmark::create();
-$performance->counter = 10;
-$performance->multiplier = 2;
+$benchmark = Benchmark::create();
+$benchmark->counter = 10;
+$benchmark->multiplier = 2;
 
-$performance->label = 'Memory peak 20 MB';
-$performance->run(function (): string {
+$benchmark->label = 'Memory peak 20 MB';
+$benchmark->run(function (): string {
 	return str_repeat(' ', 20 * 1024 * 1024);
 });
 ```
