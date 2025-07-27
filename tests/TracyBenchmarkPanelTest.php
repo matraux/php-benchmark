@@ -14,7 +14,7 @@ Bootstrap::tester();
 /**
  * @testCase
  */
-final class BenchmarkPanelTest extends TestCase
+final class TracyBenchmarkPanelTest extends TestCase
 {
 
 	public function testAddPanel(): void
@@ -26,4 +26,4 @@ final class BenchmarkPanelTest extends TestCase
 
 }
 
-new BenchmarkPanelTest()->run();
+new TracyBenchmarkPanelTest()->run();
