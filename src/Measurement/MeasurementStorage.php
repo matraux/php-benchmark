@@ -34,9 +34,7 @@ final class MeasurementStorage implements Countable, IteratorAggregate
 
 	public function getIterator(): Traversable
 	{
-		foreach (self::$results as $index => $result) {
-			yield $index => $result;
-		}
+		yield from self::$results;
 	}
 
 	public function count(): int
@@ -46,17 +44,17 @@ final class MeasurementStorage implements Countable, IteratorAggregate
 
 	public function __clone(): void
 	{
-		throw new LogicException(sprintf('Clone "%s" is not allowed.', self::class));
+		throw new LogicException(sprintf('Clone %s is not allowed.', self::class));
 	}
 
 	public function __sleep(): array
 	{
-		throw new LogicException(sprintf('Serialize "%s" is not allowed.', self::class));
+		throw new LogicException(sprintf('Serialize %s is not allowed.', self::class));
 	}
 
 	public function __wakeup(): void
 	{
-		throw new LogicException(sprintf('Unserialize "%s" is not allowed.', self::class));
+		throw new LogicException(sprintf('Unserialize %s is not allowed.', self::class));
 	}
 
 }

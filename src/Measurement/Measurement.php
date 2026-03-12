@@ -11,37 +11,27 @@ final class Measurement implements JsonSerializable, Stringable
 
 	public float $average
 	{
-		get {
-			return $this->average ??= $this->total / $this->multiplier;
-		}
+		get => $this->average ??= $this->total / $this->multiplier;
 	}
 
 	public float $min
 	{
-		get {
-			return $this->min ??= min($this->times);
-		}
+		get => $this->min ??= min($this->times);
 	}
 
 	public float $max
 	{
-		get {
-			return $this->max ??= max($this->times);
-		}
+		get => $this->max ??= max($this->times);
 	}
 
 	public float $total
 	{
-		get {
-			return $this->total ??= array_sum($this->times);
-		}
+		get => $this->total ??= array_sum($this->times);
 	}
 
 	public int $multiplier
 	{
-		get {
-			return $this->multiplier ??= count($this->times);
-		}
+		get => $this->multiplier ??= count($this->times);
 	}
 
 	public float $deviation
@@ -52,11 +42,11 @@ final class Measurement implements JsonSerializable, Stringable
 			}
 
 			$variance = 0;
-	foreach ($this->times as $time) {
-			$variance += pow($time - $this->average, 2);
-	}
+			foreach ($this->times as $time) {
+				$variance += pow($time - $this->average, 2);
+			}
 
-	  return $this->deviation = sqrt($variance / $this->multiplier);
+	  	return $this->deviation = sqrt($variance / $this->multiplier);
 		}
 	}
 
@@ -81,7 +71,7 @@ final class Measurement implements JsonSerializable, Stringable
 	public static function create(string $label, int $counter, array $times, int $memory, ?string $file = null, ?int $line = null): static
 	{
 		if (empty($times)) {
-			throw new RuntimeException('Expected non empty array, empty array given.');
+			throw new RuntimeException('Expects non empty array, empty array given.');
 		}
 
 		return new static($label, $counter, $times, $memory, $file, $line);

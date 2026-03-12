@@ -12,14 +12,12 @@ final class Benchmark
 	{
 		set {
 			if (empty($value)) {
-				throw new UnexpectedValueException('Expected "string", "empty string" given.');
+				throw new UnexpectedValueException('Expects "string", "empty string" given.');
 			}
 
 			$this->label = $value;
 		}
-		get {
-			return $this->label ??= uniqid('performance-');
-		}
+		get => $this->label ??= uniqid('performance-');
 	}
 
 	/** @var int<1,max> */
@@ -27,14 +25,12 @@ final class Benchmark
 	{
 		set {
 			if ($value <= 0) {
-				throw new UnexpectedValueException(sprintf('Expected positive integer, "%u" given', $value));
+				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
 			}
 
 			$this->counter = $value;
 		}
-		get {
-			return $this->counter;
-		}
+		get => $this->counter;
 	}
 
 	/** @var int<1,max> */
@@ -42,23 +38,16 @@ final class Benchmark
 	{
 		set {
 			if ($value <= 0) {
-				throw new UnexpectedValueException(sprintf('Expected positive integer, "%u" given', $value));
+				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
 			}
 
 			$this->multiplier = $value;
 		}
-		get {
-			return $this->multiplier;
-		}
+		get => $this->multiplier;
 	}
 
-	protected function __construct()
+	public function __construct()
 	{
-	}
-
-	public static function create(): static
-	{
-		return new static();
 	}
 
 	public function run(callable $callable, mixed ...$arguments): Measurement
