@@ -19,13 +19,13 @@
 		"symfony/console": "Required only if you use Symfony console"
 	},
 	"require-dev": {
-		"nette/tester": "^2.5",
 		"phpstan/phpstan": "^2.1",
-		"tracy/tracy": "^2.10",
-		"contributte/qa": "^0.3.2",
-		"nette/neon": "^3.4",
-		"nette/utils": "^4.0",
-		"symfony/console": "^7.3"
+		"codeception/codeception": "^5.3",
+		"codeception/module-asserts": "^3.3",
+		"friendsofphp/php-cs-fixer": "^3.94",
+		"tracy/tracy": "^2.11",
+		"nette/utils": "^4.1",
+		"symfony/console": "^8.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -34,7 +34,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"Matraux\\PhpBenchmarkTest\\": "tests"
+			"Matraux\\PhpBenchmark\\Test\\": "tests"
 		}
 	},
 	"support": {
@@ -47,15 +47,17 @@
 		}
 	},
 	"scripts": {
-		"codesniffer": "\"vendor/bin/phpcs\" --standard=\"ruleset.xml\"",
-		"codefixer": "\"vendor/bin/phpcbf\" --standard=\"ruleset.xml\"",
-		"stan": "vendor/bin/phpstan analyse --configuration \"phpstan.neon\" --ansi",
-		"test": "vendor/bin/tester -s --stop-on-fail --colors 1 -C tests/"
+		"cs:check": "vendor/bin/php-cs-fixer check",
+		"cs:fix": "vendor/bin/php-cs-fixer fix",
+		"phpstan": "vendor/bin/phpstan analyse --ansi",
+		"tests:build": "vendor/bin/codecept build",
+		"tests:run": "vendor/bin/codecept run"
 	},
 	"scripts-descriptions": {
-		"codesniffer": "Run PHP Codesniffer. Usage: \"composer codesniffer {path to folder or file}\"",
-		"codefixer": "Run PHP Codefixer. Usage: \"composer codefixer {path to folder or file}\"",
-		"stan": "Run PHP Stan. Usage \"composer stan {path to folder or file}\"",
-		"test": "Run PHP application tests"
+		"cs:check": "Check code style",
+		"cs:fix": "Fix code style",
+		"phpstan": "Static code analysis",
+		"tests:build": "Build Codeception actors",
+		"tests:run": "Run Codeception tests"
 	}
 }
