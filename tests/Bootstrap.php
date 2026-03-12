@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmarkTest;
 
@@ -14,7 +14,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 final class Bootstrap
 {
-
 	use StaticClass;
 
 	public const Root = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR;
@@ -52,5 +51,4 @@ final class Bootstrap
 			Debugger::$editor = $neon['tracy']['editor'] ?? null;
 		}
 	}
-
 }

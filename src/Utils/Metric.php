@@ -1,10 +1,9 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Utils;
 
 final class Metric
 {
-
 	public static function duration(float $value): string
 	{
 		$value = abs($value);
@@ -32,5 +31,4 @@ final class Metric
 
 		return number_format($value, 2, '.', ' ') . ' ' . $unit;
 	}
-
 }

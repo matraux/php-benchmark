@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Measurement;
 
@@ -8,34 +8,27 @@ use Stringable;
 
 final class Measurement implements JsonSerializable, Stringable
 {
-
-	public float $average
-	{
+	public float $average {
 		get => $this->average ??= $this->total / $this->multiplier;
 	}
 
-	public float $min
-	{
+	public float $min {
 		get => $this->min ??= min($this->times);
 	}
 
-	public float $max
-	{
+	public float $max {
 		get => $this->max ??= max($this->times);
 	}
 
-	public float $total
-	{
+	public float $total {
 		get => $this->total ??= array_sum($this->times);
 	}
 
-	public int $multiplier
-	{
+	public int $multiplier {
 		get => $this->multiplier ??= count($this->times);
 	}
 
-	public float $deviation
-	{
+	public float $deviation {
 		get {
 			if (isset($this->deviation)) {
 				return $this->deviation;
@@ -46,7 +39,7 @@ final class Measurement implements JsonSerializable, Stringable
 				$variance += pow($time - $this->average, 2);
 			}
 
-	  	return $this->deviation = sqrt($variance / $this->multiplier);
+			return $this->deviation = sqrt($variance / $this->multiplier);
 		}
 	}
 
@@ -59,9 +52,8 @@ final class Measurement implements JsonSerializable, Stringable
 		public readonly array $times,
 		public readonly int $memory,
 		public readonly ?string $file = null,
-		public readonly ?int $line = null
-	)
-	{
+		public readonly ?int $line = null,
+	) {
 		MeasurementStorage::add($this);
 	}
 
@@ -106,5 +98,4 @@ final class Measurement implements JsonSerializable, Stringable
 
 		return $string;
 	}
-
 }

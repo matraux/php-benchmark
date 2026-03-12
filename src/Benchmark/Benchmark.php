@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Benchmark;
 
@@ -7,9 +7,7 @@ use UnexpectedValueException;
 
 final class Benchmark
 {
-
-	public string $label
-	{
+	public string $label {
 		set {
 			if (empty($value)) {
 				throw new UnexpectedValueException('Expects "string", "empty string" given.');
@@ -21,8 +19,7 @@ final class Benchmark
 	}
 
 	/** @var int<1,max> */
-	public int $counter = 1
-	{
+	public int $counter = 1 {
 		set {
 			if ($value <= 0) {
 				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
@@ -34,8 +31,7 @@ final class Benchmark
 	}
 
 	/** @var int<1,max> */
-	public int $multiplier = 1
-	{
+	public int $multiplier = 1 {
 		set {
 			if ($value <= 0) {
 				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
@@ -46,9 +42,7 @@ final class Benchmark
 		get => $this->multiplier;
 	}
 
-	public function __construct()
-	{
-	}
+	public function __construct() {}
 
 	public function run(callable $callable, mixed ...$arguments): Measurement
 	{
@@ -79,8 +73,7 @@ final class Benchmark
 			times: $times,
 			memory: $memory,
 			file: $debug['file'],
-			line: $debug['line']
+			line: $debug['line'],
 		);
 	}
-
 }

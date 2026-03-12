@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Measurement;
 
@@ -12,15 +12,12 @@ use Traversable;
  */
 final class MeasurementStorage implements Countable, IteratorAggregate
 {
-
 	protected static self $instance;
 
 	/** @var array<int,Measurement> */
 	protected static array $results = [];
 
-	protected function __construct()
-	{
-	}
+	protected function __construct() {}
 
 	public static function create(): static
 	{
@@ -56,5 +53,4 @@ final class MeasurementStorage implements Countable, IteratorAggregate
 	{
 		throw new LogicException(sprintf('Unserialize %s is not allowed.', self::class));
 	}
-
 }

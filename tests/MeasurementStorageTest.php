@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmarkTest;
 
@@ -17,7 +17,6 @@ Bootstrap::tester();
  */
 final class MeasurementStorageTest extends TestCase
 {
-
 	public function testSingleton(): void
 	{
 		Bootstrap::purgeTemp(__FUNCTION__);
@@ -72,7 +71,6 @@ final class MeasurementStorageTest extends TestCase
 			$clone = clone MeasurementStorage::create();
 		}, LogicException::class);
 	}
-
 }
 
 new MeasurementStorageTest()->run();

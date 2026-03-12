@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmarkTest;
 
@@ -15,7 +15,6 @@ Bootstrap::tester();
  */
 final class MeasurementTest extends TestCase
 {
-
 	public function testProperties(): void
 	{
 		Bootstrap::purgeTemp(__FUNCTION__);
@@ -24,7 +23,7 @@ final class MeasurementTest extends TestCase
 			label: 'Label',
 			counter: 1,
 			times: [0, 1.0, 2, 3.0, 4, 5.0],
-			memory: 10
+			memory: 10,
 		);
 
 		Assert::equal($measurement->average, 2.5);
@@ -50,7 +49,7 @@ final class MeasurementTest extends TestCase
 			label: 'Label',
 			counter: 1,
 			times: [0],
-			memory: 0
+			memory: 0,
 		);
 
 		Assert::noError(function () use ($measurement): void {
@@ -66,14 +65,13 @@ final class MeasurementTest extends TestCase
 			label: 'Label',
 			counter: 1,
 			times: [0],
-			memory: 0
+			memory: 0,
 		);
 
 		Assert::noError(function () use ($measurement): void {
 			(string) $measurement;
 		});
 	}
-
 }
 
 new MeasurementTest()->run();

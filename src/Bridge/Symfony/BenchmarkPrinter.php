@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Bridge\Symfony;
 
@@ -10,7 +10,6 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 final class BenchmarkPrinter
 {
-
 	public static function render(SymfonyStyle $io): void
 	{
 		$table = $io->createTable();
@@ -48,5 +47,4 @@ final class BenchmarkPrinter
 
 		$table->render();
 	}
-
 }

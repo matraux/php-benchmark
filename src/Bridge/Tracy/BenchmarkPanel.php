@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmark\Bridge\Tracy;
 
@@ -11,7 +11,6 @@ use Tracy\IBarPanel;
 
 final class BenchmarkPanel implements IBarPanel
 {
-
 	private const Images = __DIR__ . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR;
 
 	private const Templates = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
@@ -44,5 +43,4 @@ final class BenchmarkPanel implements IBarPanel
 			require_once self::Templates . 'BenchmarkPanel.panel.phtml';
 		});
 	}
-
 }

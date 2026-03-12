@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmarkTest;
 
@@ -16,7 +16,6 @@ Bootstrap::tester();
  */
 final class BenchmarkTest extends TestCase
 {
-
 	public function testInstance(): void
 	{
 		$benchmark = Benchmark::create();
@@ -51,7 +50,6 @@ final class BenchmarkTest extends TestCase
 			}, 'T', 'e', 's', 't');
 		});
 	}
-
 }
 
 new BenchmarkTest()->run();

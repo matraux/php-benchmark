@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace Matraux\PhpBenchmarkTest;
 
@@ -16,14 +16,12 @@ Bootstrap::tester();
  */
 final class TracyBenchmarkPanelTest extends TestCase
 {
-
 	public function testAddPanel(): void
 	{
 		Assert::noError(function (): void {
 			Debugger::getBar()->addPanel(new BenchmarkPanel());
 		});
 	}
-
 }
 
 new TracyBenchmarkPanelTest()->run();
