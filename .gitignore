@@ -1,5 +1,6 @@
 composer.lock
 vendor
-temp
-phpstan.editor.neon
-tracy.editor.neon
+phpstan.neon
+tests/Support
+.sandbox/*
+.php-cs-fixer.php
