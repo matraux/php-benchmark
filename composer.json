@@ -3,6 +3,7 @@
 	"description": "Benchmarking tool for PHP 8.4+ to measure code performance with accurate time and memory profiling.",
 	"keywords": ["PHP Benchmark", "php-benchmark", "MATRAUX"],
 	"type": "library",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Daniel Žůrek",
