@@ -3,44 +3,42 @@
 namespace Matraux\PhpBenchmark\Bridge\Tracy;
 
 use Matraux\PhpBenchmark\Measurement\Measurement;
-use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
-use Nette\Utils;
-use Nette\Utils\FileSystem;
+use Matraux\PhpBenchmark\Measurement\Storage;
 use Tracy\Helpers;
 use Tracy\IBarPanel;
 
 final class BenchmarkPanel implements IBarPanel
 {
-	private const Images = __DIR__ . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR;
+	private const string Images = __DIR__ . '/images/';
 
-	private const Templates = __DIR__ . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
+	private const string Templates = __DIR__ . '/templates/';
 
-	public static function editorLink(Measurement $result): ?string
+	public static function editorLink(Measurement $measurement): ?string
 	{
-		return $result->file ? Helpers::editorLink($result->file, $result->line) : null;
+		return $measurement->file ? Helpers::editorLink($measurement->file, $measurement->line) : null;
 	}
 
 	public function getTab(): string
 	{
-		if (!count(MeasurementStorage::create())) {
+		if (empty(Storage::all())) {
 			return '';
 		}
 
-		return Utils\Helpers::capture(function (): void {
-			$svg = FileSystem::read(self::Images . 'speedometer.min.svg');
-			require_once self::Templates . 'BenchmarkPanel.tab.phtml';
+		return Helpers::capture(function (): void {
+			$svg = file_get_contents(self::Images . 'speedometer.min.svg');
+			require self::Templates . 'BenchmarkPanel.tab.phtml';
 		});
 	}
 
 	public function getPanel(): string
 	{
-		if (!count(MeasurementStorage::create())) {
+		if (empty(Storage::all())) {
 			return '';
 		}
 
-		return Utils\Helpers::capture(function (): void {
-			$results = MeasurementStorage::create();
-			require_once self::Templates . 'BenchmarkPanel.panel.phtml';
+		return Helpers::capture(function (): void {
+			$results = Storage::all();
+			require self::Templates . 'BenchmarkPanel.panel.phtml';
 		});
 	}
 }

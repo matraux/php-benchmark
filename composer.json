@@ -14,7 +14,6 @@
 		"php": "^8.4"
 	},
 	"suggest": {
-		"nette/utils": "Required only if you use Tracy",
 		"tracy/tracy": "Required only if you use Tracy",
 		"symfony/console": "Required only if you use Symfony console"
 	},
@@ -24,7 +23,6 @@
 		"codeception/module-asserts": "^3.3",
 		"friendsofphp/php-cs-fixer": "^3.94",
 		"tracy/tracy": "^2.11",
-		"nette/utils": "^4.1",
 		"symfony/console": "^8.0"
 	},
 	"autoload": {
