@@ -8,7 +8,6 @@ The benchmark output can be printed as a styled table in any Symfony Console com
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArgvInput;
-use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -17,9 +16,7 @@ use Matraux\PhpBenchmark\Bridge\Symfony\BenchmarkPrinter;
 new class extends Command {
 	protected function execute(InputInterface $input, OutputInterface $output): int
 	{
-		$io = new SymfonyStyle($input, $output);
-
-		$benchmark = Benchmark::create();
+		$benchmark = new Benchmark;
 		$benchmark->label = 'Memory peak 20 MB';
 		$benchmark->counter = 10;
 		$benchmark->multiplier = 2;
@@ -28,7 +25,7 @@ new class extends Command {
 			return str_repeat(' ', 20 * 1024 * 1024);
 		});
 
-		BenchmarkPrinter::render($io);
+		BenchmarkPrinter::render($output);
 
 		return Command::SUCCESS;
 	}

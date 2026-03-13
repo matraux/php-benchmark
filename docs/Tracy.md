@@ -24,7 +24,7 @@ Debugger::getBar()->addPanel(new BenchmarkPanel());
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 
-$benchmark = Benchmark::create();
+$benchmark = new Benchmark;
 $benchmark->counter = 10;
 $benchmark->multiplier = 2;
 

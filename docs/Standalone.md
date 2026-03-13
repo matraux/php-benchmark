@@ -7,7 +7,7 @@ You can use the benchmark independently, without any framework or Tracy integrat
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 
-$benchmark = Benchmark::create();
+$benchmark = new Benchmark;
 $benchmark->counter = 10;
 $benchmark->multiplier = 2;
 
