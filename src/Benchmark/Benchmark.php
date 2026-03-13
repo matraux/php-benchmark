@@ -3,49 +3,29 @@
 namespace Matraux\PhpBenchmark\Benchmark;
 
 use Matraux\PhpBenchmark\Measurement\Measurement;
+use Matraux\PhpBenchmark\Measurement\Storage;
 use UnexpectedValueException;
 
 final class Benchmark
 {
 	public string $label {
-		set {
-			if (empty($value)) {
-				throw new UnexpectedValueException('Expects "string", "empty string" given.');
-			}
-
-			$this->label = $value;
-		}
+		set => !empty($value) ? $value : throw new UnexpectedValueException('Expects "string", "empty string" given.');
 		get => $this->label ??= uniqid('performance-');
 	}
 
 	/** @var int<1,max> */
 	public int $counter = 1 {
-		set {
-			if ($value <= 0) {
-				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
-			}
-
-			$this->counter = $value;
-		}
-		get => $this->counter;
+		set => $value > 0 ? $value : throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
 	}
 
 	/** @var int<1,max> */
 	public int $multiplier = 1 {
-		set {
-			if ($value <= 0) {
-				throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
-			}
-
-			$this->multiplier = $value;
-		}
-		get => $this->multiplier;
+		set => $value > 0 ? $value : throw new UnexpectedValueException(sprintf('Expects positive integer, "%u" given.', $value));
 	}
-
-	public function __construct() {}
 
 	public function run(callable $callable, mixed ...$arguments): Measurement
 	{
+		/** @var non-empty-array<int|float> $times */
 		$times = [];
 		memory_reset_peak_usage();
 		$memory = memory_get_peak_usage();
@@ -67,7 +47,7 @@ final class Benchmark
 		/** @var array{function:string,line:int,file:string,class:string,type:string} */
 		$debug = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1)[0];
 
-		return Measurement::create(
+		$measurement = new Measurement(
 			label: $this->label,
 			counter: $this->counter,
 			times: $times,
@@ -75,5 +55,7 @@ final class Benchmark
 			file: $debug['file'],
 			line: $debug['line'],
 		);
+
+		return Storage::collect($measurement);
 	}
 }

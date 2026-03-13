@@ -2,17 +2,19 @@
 
 namespace Matraux\PhpBenchmark\Bridge\Symfony;
 
-use Matraux\PhpBenchmark\Measurement\MeasurementStorage;
+use Matraux\PhpBenchmark\Measurement\Storage;
 use Matraux\PhpBenchmark\Utils\Metric;
+use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Helper\TableCellStyle;
-use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\Console\Output\OutputInterface;
 
 final class BenchmarkPrinter
 {
-	public static function render(SymfonyStyle $io): void
+	public static function render(OutputInterface $output): void
 	{
-		$table = $io->createTable();
+		$table = new Table($output);
+		$table->setStyle('box');
 
 		$table->setHeaders([
 			'Label',
@@ -25,9 +27,8 @@ final class BenchmarkPrinter
 			'Counter',
 			'Multiplier',
 		]);
-		$table->setStyle('box');
 
-		foreach (MeasurementStorage::create() as $measurement) {
+		foreach (Storage::all() as $measurement) {
 			$table->addRow([
 				$measurement->label,
 				Metric::duration($measurement->min),
