@@ -36,13 +36,13 @@ composer require matraux/php-benchmark
 <br>
 
 ## Requirements
-| version | PHP | Note
-|----|---|---
-| 1.0.7 | 8.3+ | Initial commit
-| 1.1.0 | 8.4+ | Property access, performance optimizations
-| 1.1.1 | 8.4+ | Bugfixes and formatting improvements
-| 1.2.0 | 8.4+ | Integrations into Bridge/Tracy
-| 1.3.0 | 8.4+ | Added Symfony Console integration
+| version | PHP | note |
+|---|---|---|
+| 1.0.7 | 8.3+ | Initial commit |
+| 1.1.0 | 8.4+ | Property access, performance optimizations |
+| 1.1.1 | 8.4+ | Bugfixes and formatting improvements |
+| 1.2.0 | 8.4+ | Integrations into Bridge/Tracy |
+| 1.3.0 | 8.4+ | Added Symfony Console integration |
 
 <br>
 
@@ -51,7 +51,7 @@ See [Tracy](./docs/Tracy.md), [Standalone](./docs/Standalone.md) or [Console](./
 ```php
 use Matraux\PhpBenchmark\Benchmark\Benchmark;
 
-$benchmark = Benchmark::create();
+$benchmark = new Benchmark;
 $benchmark->label = 'Memory peak 20 MB';
 $benchmark->counter = 10;
 $benchmark->multiplier = 2;
