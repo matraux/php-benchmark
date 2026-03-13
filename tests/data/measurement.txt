@@ -1,0 +1,11 @@
+Average: 0
+Min: 0
+Max: 0
+Total: 0
+Deviation: 0
+Multiplier: 1
+Label: Label
+Counter: 1
+Memory: 0
+File: 
+Line: 
