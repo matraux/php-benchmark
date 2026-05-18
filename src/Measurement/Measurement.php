@@ -43,7 +43,7 @@ final readonly class Measurement implements JsonSerializable, Stringable
 
 		$variance = 0;
 		foreach ($this->times as $time) {
-			$variance += pow($time - $this->average, 2);
+			$variance += ($time - $this->average) ** 2;
 		}
 		$this->deviation = sqrt($variance / $this->multiplier);
 	}
